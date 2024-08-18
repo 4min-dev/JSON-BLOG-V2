@@ -35,6 +35,18 @@ class PostsController {
         }
     }
 
+    async getPostById(req,res) {
+        try {
+            const { postId } = req.params
+            
+            const post = await PostModel.findOne({postId:parseInt(postId)})
+
+            return res.status(200).json(post)
+        } catch (error) {
+            return res.status(500).json({message:error})
+        }
+    }
+
     async newPost(req,res) {
         try {
             const validationResult = formatterValidationExpressResult(req,res)

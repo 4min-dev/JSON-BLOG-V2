@@ -5,6 +5,7 @@ const PostsMiddleware = require("../middleware/PostsMiddleware");
 const postsRouter = new Router()
 
 postsRouter.get('/getPosts',PostsController.getPosts)
+postsRouter.get(`/getPost/:id`,PostsController.getPostById)
 postsRouter.post('/newPost',PostsMiddleware.newPostMiddleware(),PostsController.newPost)
 postsRouter.delete(`/deletePost/:postId`,PostsController.deletePost)
 postsRouter.put(`/changePost/:postId`,PostsMiddleware.newPostMiddleware(),PostsController.changePost)
