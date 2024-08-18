@@ -16,7 +16,14 @@ const SignUpPage: React.FC = () => {
 
   const [addNewUser, { error,isSuccess,isLoading,data }] = userAuthService.useAddNewUserMutation();
 
-  async function newUser(user:IUser) {
+  async function newUser(authUser:IUser) {
+
+    const user = authUser.serverAvatar ? authUser : {
+      username:authUser.username,
+      password:authUser.password,
+      email:authUser.email
+    }
+
     await addNewUser(user)
   }
 
