@@ -36,27 +36,48 @@ class PostsController {
     }
 
     async newPost(req,res) {
-        const validationResult = formatterValidationExpressResult(req,res)
+        try {
+            const validationResult = formatterValidationExpressResult(req,res)
 
-        if(!validationResult) {
-            const { author, title, body, postId } = req.body
+            if(!validationResult) {
+                const { author, title, body, postId } = req.body
 
-            const newPost = new PostModel({postId,title,body,author})
+                const newPost = new PostModel({postId,title,body,author})
 
-            await UserModel.findOneAndUpdate({username:author},{$push:{posts:newPost._id}})
-            await newPost.save()
+                await UserModel.findOneAndUpdate({username:author},{$push:{posts:newPost._id}})
+                await newPost.save()
 
-            return res.status(200).json(newPost)
+                return res.status(200).json(newPost)
+            }
+        } catch (error) {
+            return res.status(500).json({message:error})
         }
     }
 
     async deletePost(req,res) {
         try {
-            const { id } = req.body
-
-            const deletedPost = await PostsModel.findOneAndDelete({postId:id})
+            const { postId } = req.params
+            const deletedPost = await PostsModel.findOneAndDelete({postId:postId})
             
-            return res.status(200).json({message:`${deletedPost.title} was deleted`})
+            return res.status(200).json(deletedPost)
+        } catch (error) {
+            return res.status(500).json({message:error})
+        }
+    }
+
+    async changePost(req,res) {
+        try {
+
+            const validationResult = formatterValidationExpressResult(req,res)
+
+            if(!validationResult) {
+                const { postId } = req.params
+                const { title, body } = req.body
+
+                const newPostData = await PostModel.findOneAndUpdate({postId}, {$set: {title:title,body:body}})
+
+                return res.status(200).json(newPostData)
+            }
         } catch (error) {
             return res.status(500).json({message:error})
         }
