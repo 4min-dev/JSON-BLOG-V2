@@ -20,6 +20,9 @@ class AuthController {
 
                 if(!isDataBusy) {
 
+                    const hashedPassword = bcrypt.hashSync(password,4)
+
+                   if(avatar) {
                     const formData = new FormData()
                     formData.append('image', avatar.buffer, avatar.originalname)
 
@@ -29,8 +32,11 @@ class AuthController {
                         headers: formData.getHeaders()
                     }).then(res => res.json())
 
-                    const hashedPassword = bcrypt.hashSync(password,4)
                     await AuthorizationService.signUpService(res,{username,hashedPassword,email,avatar:uploadAvatar.image})
+                   } else {
+                    await AuthorizationService.signUpService(res,{username,hashedPassword,email})
+                   }
+
                 }
             }
 
