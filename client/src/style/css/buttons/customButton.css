@@ -2,5 +2,8 @@
     background: #E7CD9C;
     border:none;
     outline: none;
+}
+
+.customButton:not(:disabled) {
     cursor: pointer;
 }

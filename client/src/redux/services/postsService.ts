@@ -2,6 +2,7 @@ import { BaseQueryFn, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/r
 import { IPost } from "../../ts/interfaces/posts/IPost";
 import { IErrorServiceResponse } from "../../ts/interfaces/errors/IErrorServiceResponse";
 import { IFilterQuery } from "../../ts/interfaces/filterContent/IFilterQuery";
+import { INewPostContent } from "../../ts/interfaces/posts/INewPostContent";
 
 type THeaderResponse = {
     "x-total-count":string | number
@@ -47,6 +48,21 @@ export const postsService = createApi({
                 url:'newPost',
                 method:'POST',
                 body:post
+            }),
+            invalidatesTags:['Post']
+        }),
+        deletePostById:builder.mutation<IPost,number>({
+            query:(postId) => ({
+                url:`deletePost/${postId}`,
+                method:'DELETE'
+            }),
+            invalidatesTags:['Post']
+        }),
+        changePostById:builder.mutation<IPost,INewPostContent>({
+            query:(newPost) => ({
+                url:`changePost/${newPost.postId}`,
+                method:'PUT',
+                body:newPost
             }),
             invalidatesTags:['Post']
         })

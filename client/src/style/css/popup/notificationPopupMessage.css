@@ -4,6 +4,7 @@
     bottom:0px;
     display: flex;
     flex-direction: column;
+    z-index: 999;
 }
 
 .notificationMessage {
@@ -11,6 +12,7 @@
     filter:drop-shadow(0px 0px 10px rgba(0,0,0,60%));
     max-width: 350px;
     margin-bottom: 20px;
+    word-wrap: break-word;
 }
 
 .notification {

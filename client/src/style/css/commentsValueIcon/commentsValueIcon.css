@@ -1,0 +1,22 @@
+.commentsValue {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 52px;
+    min-height: 52px;
+    padding-bottom: 10%;
+}
+
+.commentsValue > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto
+}

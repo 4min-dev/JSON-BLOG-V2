@@ -20,11 +20,16 @@
 
 .postCardHeading {
     position: relative;
-    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
     display: flex;
     align-items: start;
     justify-content: space-between;
     margin-bottom: 10px;
+}
+
+.postCardHeading > h1 {
+    max-width: 80%;
 }
 
 .postCardCommentsContainer {
@@ -34,31 +39,6 @@
 
 .postCardCommentsContainer h3 {
     font-weight: 500;
-}
-
-.postCardCommentsContainer > button {
-    position: relative;
-    background: none;
-    border:none;
-    outline: none;
-    width: 52px;
-    height: 52px;
-    padding-bottom: 7px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.postCardCommentsContainer > button > img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
 }
 
 .postCardInteractive {
@@ -79,21 +59,6 @@
 }
 
 .postCardPostInteractive > button {
-    position: relative;
-    background: none;
-    border:none;
-    outline: none;
     width: 25px;
     height: 25px;
-    cursor: pointer;
-}
-
-.postCardPostInteractive > button > img {
-    position: absolute;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    width: 100%;
-    height: 100%;
 }
