@@ -1,0 +1,34 @@
+.signInPageAuthorizationUI {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signInPageAuthorizationUI > input, .signInPageAuthorizationUI > .customPasswordInputContainer {
+    margin-bottom: 52px;
+}
+
+.signInPageAuthorizationUI > input, .signInPageAuthorizationUI .signInVisibilityPassword {
+    padding:13px 20px 13px 20px;
+    font-size: 40px;
+}
+
+.authorizationUILinksWithButton {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.authorizationUILinksWithButton > .authorizationLinks {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.authorizationUILinksWithButton > .styledAuthorizationButton {
+    font-size: 20px;
+    padding:15px;
+}

@@ -1,0 +1,31 @@
+.popupContainer {
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background:rgba(0,0,0,70%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background:#FFE6B5;
+    padding:20px;
+    border-radius: 15px;
+    filter:drop-shadow(5px 5px 10px black);
+    min-height: 50vh;
+    min-width: 50vw;
+}
+
+.popup > h1 {
+    font-weight: 500;
+}

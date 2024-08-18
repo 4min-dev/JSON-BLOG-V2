@@ -1,0 +1,24 @@
+.loginedProfileLink {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginedProfileLink img {
+    margin-bottom: 10px;
+}
+
+.loginedProfileLinkUsername {
+    border-right: 2px solid black;
+    padding-right: 20px;
+    margin-right: 20px;
+}
+
+.loginedProfileLinkUserInteractive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:0;
+    margin:0;
+}

@@ -1,0 +1,23 @@
+ul {
+    display: flex;
+    list-style: none;
+}
+
+ul > li:not(:last-of-type) {
+    margin:0px 72px 0px 0px;
+}
+
+ul > li > a {
+    text-decoration: none;
+}
+
+ul > li > a > h2 {
+    color:black;
+    transition: all,.4s;
+    font-weight: 500;
+}
+
+ul > li > a > h2:hover {
+    color:#FFB628;
+    transform: translateY(5px);
+}

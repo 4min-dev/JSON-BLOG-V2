@@ -1,0 +1,9 @@
+.unloginedProfileLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.unloginedProfileLink > h4 {
+    margin-top: 10px;
+}

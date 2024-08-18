@@ -1,0 +1,12 @@
+.profileLink {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profileLink img {
+    max-width: 54px;
+    max-height: 54px;
+}

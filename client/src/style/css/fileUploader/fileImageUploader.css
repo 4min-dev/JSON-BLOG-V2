@@ -1,0 +1,42 @@
+.fileImageUploader {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 15vw;
+    height: 15vw;
+    border:3px solid #E7CD9C;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.fileImageUploader input {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.fileImageUploader label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.fileImageUploader h1 {
+    font-weight: 500;
+}
+
+.fileImageUploader img {
+    width: 100px;
+    height: 100px;
+}
+
+.fileImageUploader > .imagePreview {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}

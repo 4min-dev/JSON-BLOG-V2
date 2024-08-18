@@ -1,0 +1,37 @@
+footer {
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:-500px;
+    border-top: 2px solid black;
+    margin:0px 70px 0px 70px;
+    padding:15px 8px 15px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer > .websiteTitleLogo {
+    width: 200px;
+    text-align: center;
+}
+
+.footerInteractive {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.footerAuthorContent {
+    margin-top: 10px;
+    width: 500px;
+    color:gray;
+}
+
+.footerAuthorContent > h4 {
+    font-weight: 500;
+    font-size: 16px;
+}

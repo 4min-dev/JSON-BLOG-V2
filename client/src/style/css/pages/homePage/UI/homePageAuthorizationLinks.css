@@ -1,0 +1,15 @@
+.authorizationLinksHomePage {
+    display: flex;
+    justify-content: space-between;
+    width: 35vw;
+}
+
+.authLinkHomePage >* img {
+    width: 112px;
+    height: 112px;
+}
+
+.authLinkHomePage >* h2 {
+    margin-top: 10px;
+    font-weight: 500;
+}

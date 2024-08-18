@@ -1,0 +1,8 @@
+.logoutButton {
+    background:none;
+    border:none;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+}

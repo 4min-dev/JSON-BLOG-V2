@@ -1,0 +1,14 @@
+header {
+    position: relative;
+    border-bottom: 2px solid black;
+    margin:0px 70px 0px 70px;
+    padding:15px 8px 15px 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+header > .websiteTitleLogo {
+    width: 200px;
+    text-align: center;
+}

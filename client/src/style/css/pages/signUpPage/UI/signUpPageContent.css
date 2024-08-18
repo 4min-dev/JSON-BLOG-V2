@@ -1,0 +1,49 @@
+.signUpPageContent {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 149px;
+}
+
+.signUpPageContent p {
+    font-weight: 500;
+    margin-bottom: 49px;
+}
+
+.signUpPageUIInteractive {
+    display: flex;
+    align-items: center;
+}
+
+.signUpPageUIInteractive > form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+}
+
+.signUpPageUIInteractive > form > .authorizationLinks {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.signUpPageUIInteractive > * .authorizationInputs:not(.customPasswordInputContainer > .authorizationInputs), .signUpPageUIInteractive > * .visibilityStyledPasswordInputContainer {
+    margin-bottom: 52px;
+}
+
+.signUpPageUIInteractive > * .authorizationInputs {
+    border:none;
+    outline: none;
+    background: #E7CD9C;
+    font-size: 40px;
+    padding:13px 20px 13px 20px;
+}
+
+.signUpPageUIInteractive > * .styledAuthorizationButton {
+    font-size: 20px;
+    padding:15px;
+    margin-top: 52px;
+}

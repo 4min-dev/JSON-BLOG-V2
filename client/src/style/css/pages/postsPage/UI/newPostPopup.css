@@ -1,0 +1,44 @@
+.newPostInteractiveContainer {
+    position: relative;
+    min-width: 50%;
+    max-width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.newPostInteractiveContainer > .customInput, .newPostInteractiveContainer >* .customTextarea {
+    padding:10px 20px 10px 20px;
+    font-size: 40px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.newPostInteractiveContainer > .customInput {
+    margin:20px 0px 20px 0px;
+}
+
+.newPostButtonContainer {
+    position: relative;
+    display: flex;
+    align-items: end;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.newPostButtonContainer > .customTextarea {
+    min-height: 100%;
+}
+
+.newPostButtonContainer > .customButton {
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: 900;
+    padding:15px 20px 15px 20px;
+    transition: borderRadius,.4s;
+}
+
+.newPostButtonContainer > .customButton:hover {
+    border-radius: 15px;
+    filter:drop-shadow(0px 0px 10px black)
+}

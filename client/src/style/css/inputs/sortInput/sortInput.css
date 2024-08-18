@@ -1,0 +1,18 @@
+.customSortInput > button {
+    border:none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.customSortInput .selectedSortOption {
+    color:#b6a27c;
+}
+
+.sortOptionsContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    justify-content: start;
+}

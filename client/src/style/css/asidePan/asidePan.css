@@ -1,0 +1,15 @@
+aside {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-left: 70px;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    flex-direction: column;
+    border-right: 2px solid black;
+    padding:15px 5px 15px 5px;
+    min-width: 150px;
+    max-width: 150px;
+    min-height: 25vw;
+    z-index: 10;
+}

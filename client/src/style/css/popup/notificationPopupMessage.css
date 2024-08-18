@@ -1,0 +1,45 @@
+.notificationMessageContainer {
+    position: fixed;
+    right:20px;
+    bottom:0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.notificationMessage {
+    padding:10px 15px 10px 15px;
+    filter:drop-shadow(0px 0px 10px rgba(0,0,0,60%));
+    max-width: 350px;
+    margin-bottom: 20px;
+}
+
+.notification {
+    background:#E7CD9C;
+}
+
+.errorNotification {
+    background:#f54254;
+}
+
+.successNotification {
+    background:#42f560 ;
+}
+
+.notificationMessage h1 {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.notificationMessageTimeoutContainer h1 {
+    font-weight: 500;
+}
+
+.notificationMessage > .notificationMessageTimeoutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notificationMessageTimeoutContainer .closeButton {
+    margin-left:5px
+}

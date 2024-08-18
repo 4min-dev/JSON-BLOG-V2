@@ -1,0 +1,12 @@
+.signInPageContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 149px;
+}
+
+.signInPageContent p {
+    font-weight: 500;
+    margin-bottom: 39px;
+}
