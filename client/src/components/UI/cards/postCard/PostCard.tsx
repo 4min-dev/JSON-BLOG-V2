@@ -64,7 +64,7 @@ const PostCard:React.FC<TPostCard> = ({post,deletePost,changePost}) => {
                 <h3>Author: 
                   <a href='#'>{post.author}</a>
                 </h3>
-                <a href='#'>
+                <a href={`/posts/${post.postId}`}>
                   <h3>View post</h3>
                 </a>
 

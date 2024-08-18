@@ -43,6 +43,18 @@ export const postsService = createApi({
             },
             providesTags:['Post']
         }),
+        getPostById:builder.query<IPost,number>({
+            query:(postId) => {
+
+                const params = new URLSearchParams({postId:String(postId)})
+
+                return ({
+                    url:`getPost`,
+                    method:'GET',
+                    params:params
+                })
+            }
+        }),
         addNewPost:builder.mutation<IPost,IPost>({
             query:(post) => ({
                 url:'newPost',
