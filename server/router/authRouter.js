@@ -10,5 +10,6 @@ authRouter.post('/signup',upload.single('image'),AuthorizationMiddleware.signUpM
 authRouter.post('/signin',AuthorizationMiddleware.signInMiddleware(),AuthController.signIn)
 authRouter.get('/signin/verify',AuthController.verifyToLogin)
 authRouter.put('/logout',AuthController.logout)
+authRouter.get('/getUser/:username',AuthController.getUserByUsername)
 
 module.exports = authRouter

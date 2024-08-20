@@ -1,3 +1,4 @@
+const CommentModel = require("../models/CommentModel");
 const PostModel = require("../models/PostModel");
 const PostsModel = require("../models/PostModel");
 const UserModel = require("../models/UserModel");
@@ -30,7 +31,6 @@ class PostsController {
 
             return res.setHeader('x-total-count',xTotalCount).status(200).json({data:posts,headers:res.getHeaders()})
         } catch (error) {
-            console.log(error)
             return res.status(500).json({message:error})
         }
     }
@@ -38,8 +38,8 @@ class PostsController {
     async getPostById(req,res) {
         try {
             const { postId } = req.params
-            
-            const post = await PostModel.findOne({postId:parseInt(postId)})
+
+            const post = await PostsModel.findOne({postId:parseInt(postId)})
 
             return res.status(200).json(post)
         } catch (error) {

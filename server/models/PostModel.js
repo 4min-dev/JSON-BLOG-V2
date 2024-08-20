@@ -5,14 +5,7 @@ const PostModel = new Schema({
     author:{type:String, require:true},
     title:{type:String, require:true},
     body:{type:String, require:true},
-    comments:[
-        {
-            id:{type:Number, require:true, unique:true, default:Date.now()},
-            author:{type:String, require:true}, 
-            title:{type:String, require:true}, 
-            body:{type:String, require:true}
-        }
-    ]
+    comments:[{type:Schema.Types.ObjectId, ref:'CommentModel'}]
 })
 
 module.exports = model('PostModel',PostModel)
