@@ -3,7 +3,7 @@ import HomePage from "../components/pages/homePage/HomePage";
 import SignInPage from "../components/pages/signInPage/SignInPage";
 import SignUpPage from "../components/pages/signUpPage/SignUpPage";
 import PostsPage from "../components/pages/postsPage/PostsPage";
-import PostPage from "../components/pages/postPage/PostPage";
+import FullPostPage from "../components/pages/fullPostPage/FullPostPage";
 
 export default class Router {
     publicRoutes() {
@@ -37,7 +37,7 @@ export default class Router {
             },
             {
                 path:'/posts/:postId',
-                element:<PostPage/>
+                element:<FullPostPage/>
             }
         ])
     } 

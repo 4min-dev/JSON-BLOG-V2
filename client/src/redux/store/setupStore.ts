@@ -3,6 +3,7 @@ import notificationSlice from "../reducers/slices/notificationSlice";
 import { userAuthService } from "../services/userAuthService";
 import sessionUserSlice from "../reducers/slices/sessionUserSlice";
 import { postsService } from "../services/postsService";
+import { commentsService } from "../services/commentsService";
 
 export default function setupStore() {
     return configureStore({
@@ -10,8 +11,9 @@ export default function setupStore() {
             notificationSlice:notificationSlice,
             sessionUserSlice:sessionUserSlice,
             [userAuthService.reducerPath]:userAuthService.reducer,
-            [postsService.reducerPath]:postsService.reducer
+            [postsService.reducerPath]:postsService.reducer,
+            [commentsService.reducerPath]:commentsService.reducer
         },
-        middleware:(getDefaultMiddleware) => getDefaultMiddleware().concat(userAuthService.middleware,postsService.middleware)
+        middleware:(getDefaultMiddleware) => getDefaultMiddleware().concat(userAuthService.middleware,postsService.middleware,commentsService.middleware)
     })
 }

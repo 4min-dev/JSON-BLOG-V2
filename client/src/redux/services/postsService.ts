@@ -3,6 +3,7 @@ import { IPost } from "../../ts/interfaces/posts/IPost";
 import { IErrorServiceResponse } from "../../ts/interfaces/errors/IErrorServiceResponse";
 import { IFilterQuery } from "../../ts/interfaces/filterContent/IFilterQuery";
 import { INewPostContent } from "../../ts/interfaces/posts/INewPostContent";
+import { IComment } from "../../ts/interfaces/posts/IComment";
 
 type THeaderResponse = {
     "x-total-count":string | number
@@ -43,15 +44,11 @@ export const postsService = createApi({
             },
             providesTags:['Post']
         }),
-        getPostById:builder.query<IPost,number>({
+        getPostById:builder.query<IPost,string | number>({
             query:(postId) => {
-
-                const params = new URLSearchParams({postId:String(postId)})
-
                 return ({
-                    url:`getPost`,
-                    method:'GET',
-                    params:params
+                    url:`getPost/${postId}`,
+                    method:'GET'
                 })
             }
         }),

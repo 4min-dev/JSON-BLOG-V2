@@ -4,6 +4,8 @@
     border:none;
     outline: none;
     cursor: pointer;
+    min-width: 25px;
+    min-height: 25px;
 }
 
 .deleteButton > img {

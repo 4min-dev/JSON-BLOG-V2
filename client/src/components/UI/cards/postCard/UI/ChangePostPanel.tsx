@@ -1,9 +1,10 @@
 import React from 'react'
-import '../../../../../style/css/changePostPan/changePostPanel.css'
+import '../../../../../style/css/forms/changePostPanel.css'
 import CustomInput from '../../../inputs/CustomInput'
 import CustomButton from '../../../buttons/CustomButton'
 import { INewPostContentState } from '../../../../../ts/interfaces/posts/INewPostContentState'
 import { IPost } from '../../../../../ts/interfaces/posts/IPost'
+import CustomForm from '../../../forms/CustomForm'
 
 type TChangePostPanel = {
     currPostContent:IPost,
@@ -15,11 +16,11 @@ type TChangePostPanel = {
 
 const ChangePostPanel:React.FC<TChangePostPanel> = ({currPostContent,newPostContent,newTitleHandler,newBodyHandler,sendPostData}) => {
   return (
-    <form className='changePostPanelForm'>
+    <CustomForm formClassname={'changePostPanelForm'}>
       <CustomInput value={newPostContent.title} type='text' placeholder='Title' onChange={newTitleHandler}/>
       <CustomInput value={newPostContent.body} type='text' placeholder='Description' onChange={newBodyHandler}/>
       <CustomButton disabled={newPostContent.title == currPostContent.title && newPostContent.body == currPostContent.body} buttonText='Save' onClick={sendPostData}/>
-    </form>
+    </CustomForm>
   )
 }
 

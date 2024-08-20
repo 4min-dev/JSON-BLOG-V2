@@ -34,6 +34,7 @@ const NewPostPopup:React.FC<TNewPostPopup> = ({setNewPostPopup}) => {
     }
 
     await addNewPost(post)
+    setNewPost({title:'',body:''})
   }
 
   function setPostTitle(event:React.ChangeEvent<HTMLInputElement>) {
@@ -59,9 +60,9 @@ const NewPostPopup:React.FC<TNewPostPopup> = ({setNewPostPopup}) => {
     <PopupWindow title='New post' setPopupActive={setNewPostPopup}>
         {isLoading && <SpinnerLoader/>}
         <div className='newPostInteractiveContainer'>
-            <CustomInput type='text' placeholder='Title' onChange={setPostTitle}/>
+            <CustomInput value={newPost.title} type='text' placeholder='Title' onChange={setPostTitle}/>
             <div className="newPostButtonContainer">
-                <CustomTextarea placeholder='Description' onChange={setPostBody}/>
+                <CustomTextarea value={newPost.body} placeholder='Description' onChange={setPostBody}/>
                 <CustomButton buttonText='→' onClick={handleNewPost}/>
             </div>
         </div>

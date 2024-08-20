@@ -1,0 +1,14 @@
+.newCommentPan {
+    width: 50vw;
+}
+
+.newCommentPan > .customTextarea, .newCommentPan > .customButton {
+    padding:10px 20px 10px 20px;
+    font-size: 30px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.newCommentPan > .customTextarea {
+    min-height: 25vh;
+}

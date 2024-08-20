@@ -46,6 +46,12 @@ export const userAuthService = createApi({
                 method:'PUT',
                 credentials:'include'
             })
+        }),
+        findUserByUsername:builder.query<ITransferUserData,string>({
+            query:(username) => ({
+                url:`getUser/${username}`,
+                method:'GET'
+            })
         })
     })
 })
