@@ -18,11 +18,13 @@ const SignUpPage: React.FC = () => {
 
   async function newUser(authUser:IUser) {
 
-    const user = authUser.serverAvatar ? authUser : {
-      username:authUser.username,
-      password:authUser.password,
-      email:authUser.email
-    }
+    const user = authUser.serverAvatar 
+      ? authUser 
+      : {
+          username:authUser.username,
+          password:authUser.password,
+          email:authUser.email
+        }
 
     await addNewUser(user)
   }

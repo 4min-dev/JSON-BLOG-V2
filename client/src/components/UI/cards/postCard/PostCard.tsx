@@ -62,7 +62,9 @@ const PostCard:React.FC<TPostCard> = ({post,deletePost,changePost}) => {
 
             <div className='postCardInteractive'>
                 <h3>Author: 
-                  <a href='#'>{post.author}</a>
+                  <span className='postAuthorUsername'>
+                    <a href='#'>{post.author}</a>
+                  </span>
                 </h3>
                 <a href={`/posts/${post.postId}`}>
                   <h3>View post</h3>

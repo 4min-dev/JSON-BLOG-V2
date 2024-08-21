@@ -7,6 +7,16 @@ export const postSortData:ISortOption[] = [
         sortValue:0
     },
     {
+        name:'Author ↑',
+        sortKey:'author',
+        sortValue:1
+    },
+    {
+        name:'Author ↓',
+        sortKey:'author',
+        sortValue:-1
+    },
+    {
         name:'Title ↑',
         sortKey:"title",
         sortValue:1
@@ -27,12 +37,12 @@ export const postSortData:ISortOption[] = [
         sortValue:-1
     },
     {
-        name:'comments ↑',
+        name:'Comments ↑',
         sortKey:'commentsCount',
         sortValue:1
     },
     {
-        name:'comments ↓',
+        name:'Comments ↓',
         sortKey:'commentsCount',
         sortValue:-1
     },

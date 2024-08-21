@@ -1,0 +1,21 @@
+.fullPostCard {
+    min-width: 50vw;
+    max-width: 50vw;
+    padding:20px 40px 20px 40px;
+    background: #FFE6B5;
+    border-radius: 15px;
+    filter:drop-shadow(10px 10px 15px rgba(0, 0, 0, .6));
+    margin-top: 100px;
+    word-wrap: break-word;
+    flex-wrap: wrap;
+}
+
+.fullPostCardFooter {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    border-top: 2px solid black;
+    padding-top: 10px;
+}

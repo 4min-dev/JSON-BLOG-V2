@@ -8,16 +8,21 @@ import DeleteButton from '../../buttons/DeleteButton'
 import EditButton from '../../buttons/EditButton'
 import { commentsService } from '../../../../redux/services/commentsService'
 import ChangeCommentPan from '../../forms/changeCommentPan/ChangeCommentPan'
+import Notifications from '../../popup/Notifications'
+import { useDispatch } from 'react-redux'
+import useNotificationMessage from '../../../../hooks/useNotificationMessage'
 
 const CommentCard:React.FC<{comment:IComment}> = ({comment}) => {
 
+  const dispatch = useDispatch()
   const selector = useTypedSelector(state => state.sessionUserSlice)
 
   let [editPanel,setEditPanel] = React.useState(false)
 
   const { data:commentAuthor, isLoading } = userAuthService.useFindUserByUsernameQuery(comment.author)
-  const [deleteComment,  { isLoading:isPostDeletion }] = commentsService.useDeleteCommentByIdMutation()
-  const [changeComment, { isLoading:isPostChanging }] = commentsService.useChangePostByIdMutation()
+
+  const [deleteComment,  { isLoading:isPostDeletion, isSuccess:isPostDeletionSuccess, error:postDeletionError }] = commentsService.useDeleteCommentByIdMutation()
+  const [changeComment, { isLoading:isPostChanging, isSuccess:isPostChanged, error:changedPostError }] = commentsService.useChangePostByIdMutation()
 
   function editCommentPanelHandler() {
     setEditPanel(!editPanel)
@@ -32,6 +37,16 @@ const CommentCard:React.FC<{comment:IComment}> = ({comment}) => {
     editCommentPanelHandler()
   }
 
+  React.useEffect(() => {
+    const successMessage = `Comment has been deleted`
+    useNotificationMessage({dispatch,error:postDeletionError,isSuccess:isPostDeletionSuccess,successMessage})
+  },[isPostDeletionSuccess,postDeletionError])
+
+  React.useEffect(() => {
+    const successMessage = `Comment has been changed`
+    useNotificationMessage({dispatch,error:changedPostError,isSuccess:isPostChanged,successMessage})
+  },[changedPostError,isPostChanged])
+
   return (
     <>
      {(isLoading || isPostDeletion) && <SpinnerLoader/>}
@@ -39,8 +54,10 @@ const CommentCard:React.FC<{comment:IComment}> = ({comment}) => {
      <div className='commentCard'>
       {isPostChanging && <SpinnerLoader/>}
         <div className='commentCardHeading'>
-            <img src={commentAuthor.avatar ? commentAuthor.avatar : '/person.png'} alt='commentAuthorAvatar'/>
-            <h1>{commentAuthor.email}</h1>
+            <a href='#'>
+              <img src={commentAuthor.avatar ? commentAuthor.avatar : '/person.png'} alt='commentAuthorAvatar'/>
+            </a>
+            <h1>{commentAuthor.username}</h1>
         </div>
 
         <h2>{comment.body}</h2>
