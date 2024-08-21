@@ -20,17 +20,22 @@ class AuthController {
 
                 if(!isDataBusy) {
 
-                    const formData = new FormData()
-                    formData.append('image', avatar.buffer, avatar.originalname)
-
-                    const uploadAvatar = await fetch('http://localhost:3000/image/upload', {
-                        method:'POST',
-                        body:formData,
-                        headers: formData.getHeaders()
-                    }).then(res => res.json())
-
                     const hashedPassword = bcrypt.hashSync(password,4)
-                    await AuthorizationService.signUpService(res,{username,hashedPassword,email,avatar:uploadAvatar.image})
+
+                    if(avatar) {
+                        const formData = new FormData()
+                        formData.append('image', avatar.buffer, avatar.originalname)
+    
+                        const uploadAvatar = await fetch('http://localhost:3000/image/upload', {
+                            method:'POST',
+                            body:formData,
+                            headers: formData.getHeaders()
+                        }).then(res => res.json())
+    
+                        await AuthorizationService.signUpService(res,{username,hashedPassword,email,avatar:uploadAvatar.image})
+                       } else {
+                        await AuthorizationService.signUpService(res,{username,hashedPassword,email})
+                    }
                 }
             }
 

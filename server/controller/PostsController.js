@@ -69,7 +69,9 @@ class PostsController {
     async deletePost(req,res) {
         try {
             const { postId } = req.params
+
             const deletedPost = await PostsModel.findOneAndDelete({postId:postId})
+            await UserModel.findOneAndUpdate({username:deletedPost.author}, {$pull: {posts:deletedPost._id}})
             
             return res.status(200).json(deletedPost)
         } catch (error) {

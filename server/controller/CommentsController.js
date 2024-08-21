@@ -40,8 +40,7 @@ class CommentsController {
             const { id } = req.params
 
             const deletedComment = await CommentModel.findOneAndDelete({id:parseInt(id)})
-            
-            const post = await PostModel.findOneAndUpdate({_id:deletedComment.postId},{$pull: {comments: deletedComment._id}})
+            await PostModel.findOneAndUpdate({_id:deletedComment.postId},{$pull: {comments: deletedComment._id}})
 
             return res.status(200).json(deletedComment)
         } catch (error) {
