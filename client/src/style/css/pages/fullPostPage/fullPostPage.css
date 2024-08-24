@@ -15,6 +15,10 @@
     margin-top: 10vh;
 }
 
+.fullPostPageCommentsContainer > h1 {
+    margin-top: 20px;
+}
+
 .fullPostPageCommentsContainer > .newCommentPan {
     margin-top: 10vh;
 }

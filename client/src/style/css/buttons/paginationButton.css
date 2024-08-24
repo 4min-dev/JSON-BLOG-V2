@@ -1,0 +1,16 @@
+.paginationButton {
+    border:none;
+    outline: none;
+    background:none;
+    color:black;
+    transition: color,.3s;
+}
+
+.paginationButton:hover:not(:disabled) {
+    color:#b6a27c;
+    cursor: pointer;
+}
+
+.paginationButton:disabled {
+    color:#b6a27c
+}

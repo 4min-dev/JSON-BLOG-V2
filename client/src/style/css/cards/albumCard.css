@@ -1,0 +1,59 @@
+.albumCard {
+    position: relative;
+    border-radius: 15px;
+    word-wrap: break-word;
+}
+
+.albumCard > button {
+    position: absolute;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    transition: all,.3s;
+    display: flex;
+    justify-content: center;
+    padding:10px 20px 10px 20px;
+}
+
+.albumCard > button > h1 {
+    position: absolute;
+    z-index: 2;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.albumCard > button > img {
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.albumCard:hover > button {
+    filter:blur(10px);
+}
+
+.albumCard::before {
+    position: absolute;
+    content: 'Click to view photos';
+    z-index: 99;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    transition: all,.4s;
+    cursor: pointer;
+}
+
+.albumCard:hover::before {
+    font-size: 36px;
+}

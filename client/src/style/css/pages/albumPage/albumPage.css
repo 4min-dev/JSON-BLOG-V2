@@ -1,0 +1,8 @@
+.albumsPageContainer > .paginationList {
+    margin-top: 100px;
+}
+
+.albumsPageContainer > aside > .customButton {
+    padding:5px 10px 5px 10px;
+    font-size: 25px;
+}

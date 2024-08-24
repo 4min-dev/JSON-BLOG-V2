@@ -1,0 +1,9 @@
+.paginationList {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.paginationList > .paginationButton {
+    margin-left: 20px;
+}

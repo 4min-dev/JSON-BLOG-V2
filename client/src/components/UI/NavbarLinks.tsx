@@ -5,13 +5,13 @@ const NavbarLinks:React.FC = () => {
   return (
     <ul>
       <li>
-        <a href='#'><h2>Posts</h2></a>
+        <a href='/posts'><h2>Posts</h2></a>
       </li>
       <li>
-        <a href='#'><h2>Albums</h2></a>
+        <a href='/albums'><h2>Albums</h2></a>
       </li>
       <li>
-        <a href='#'><h2>Todolist</h2></a>
+        <a href='/todo'><h2>Todolist</h2></a>
       </li>
     </ul>
   )

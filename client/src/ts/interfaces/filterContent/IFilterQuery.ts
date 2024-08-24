@@ -4,5 +4,7 @@ export interface IFilterQuery {
     searchQuery:string,
     sortQuery:ISortOption,
     limitQuery:number,
-    totalContentCount:number | null
+    totalContentCount:number | null,
+    currPage?:number,
+    totalPages?:null | number
 }

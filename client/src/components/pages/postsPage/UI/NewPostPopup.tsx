@@ -66,7 +66,6 @@ const NewPostPopup:React.FC<TNewPostPopup> = ({setNewPostPopup}) => {
                 <CustomButton buttonText='→' onClick={handleNewPost}/>
             </div>
         </div>
-        <Notifications/>
     </PopupWindow>
   )
 }

@@ -1,0 +1,14 @@
+.albumsListContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, .3fr);
+    grid-template-rows: repeat(3,25vh);
+    gap: 100px 72px;
+    justify-content: center;
+    margin-top: 15vh;
+    max-height: fit-content;
+}
+
+.albumCard:nth-child(3) {
+    grid-column: 1 / -1;
+  }

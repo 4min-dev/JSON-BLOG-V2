@@ -8,7 +8,6 @@ import DeleteButton from '../../buttons/DeleteButton'
 import EditButton from '../../buttons/EditButton'
 import { commentsService } from '../../../../redux/services/commentsService'
 import ChangeCommentPan from '../../forms/changeCommentPan/ChangeCommentPan'
-import Notifications from '../../popup/Notifications'
 import { useDispatch } from 'react-redux'
 import useNotificationMessage from '../../../../hooks/useNotificationMessage'
 

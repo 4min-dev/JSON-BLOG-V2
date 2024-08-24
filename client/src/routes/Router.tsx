@@ -4,6 +4,7 @@ import SignInPage from "../components/pages/signInPage/SignInPage";
 import SignUpPage from "../components/pages/signUpPage/SignUpPage";
 import PostsPage from "../components/pages/postsPage/PostsPage";
 import FullPostPage from "../components/pages/fullPostPage/FullPostPage";
+import AlbumsPage from "../components/pages/albumsPage/AlbumsPage";
 
 export default class Router {
     publicRoutes() {
@@ -38,6 +39,10 @@ export default class Router {
             {
                 path:'/posts/:postId',
                 element:<FullPostPage/>
+            },
+            {
+                path:'/albums',
+                element:<AlbumsPage/>
             }
         ])
     } 
