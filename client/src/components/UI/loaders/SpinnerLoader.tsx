@@ -1,9 +1,13 @@
 import React from 'react'
 import '../../../style/css/loaders/spinnerLoader.css'
 
-const SpinnerLoader:React.FC = () => {
+type TSpinnerLoader = {
+  positionType:'fixed' | 'absolute'
+}
+
+const SpinnerLoader:React.FC<TSpinnerLoader> = ({positionType}) => {
   return (
-    <div className='spinnerLoaderContainer'>
+    <div className={`spinnerLoaderContainer ${positionType}`}>
       <div className="spinnerLoader">
         <img src='/spinner.gif' alt='loader'/>
       </div>

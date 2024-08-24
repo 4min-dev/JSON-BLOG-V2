@@ -1,5 +1,4 @@
 .spinnerLoaderContainer {
-    position: fixed;
     left:0;
     right:0;
     top:0;
@@ -8,8 +7,16 @@
     z-index: 999;
 }
 
+.fixed {
+    position: fixed;
+}
+
+.absolute {
+    position: absolute;
+}
+
 .spinnerLoader {
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
     display: flex;

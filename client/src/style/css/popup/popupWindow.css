@@ -4,6 +4,8 @@
     right:0;
     top:0;
     bottom:0;
+    height: 100%;
+    width: 100%;
     background:rgba(0,0,0,70%);
     z-index: 999;
     display: flex;
@@ -23,7 +25,10 @@
     border-radius: 15px;
     filter:drop-shadow(5px 5px 10px black);
     min-height: 50vh;
+    max-height: 75vh;
     min-width: 50vw;
+    max-width: 75vw;
+    overflow-y: scroll;
 }
 
 .popup > h1 {

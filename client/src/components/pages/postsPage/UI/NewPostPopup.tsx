@@ -4,7 +4,6 @@ import PopupWindow from '../../../UI/popup/PopupWindow'
 import CustomInput from '../../../UI/inputs/CustomInput'
 import CustomTextarea from '../../../UI/inputs/CustomTextarea'
 import CustomButton from '../../../UI/buttons/CustomButton'
-import Notifications from '../../../UI/popup/Notifications'
 import useNotificationMessage from '../../../../hooks/useNotificationMessage'
 import { useDispatch } from 'react-redux'
 import SpinnerLoader from '../../../UI/loaders/SpinnerLoader'
@@ -34,7 +33,6 @@ const NewPostPopup:React.FC<TNewPostPopup> = ({setNewPostPopup}) => {
     }
 
     await addNewPost(post)
-    setNewPost({title:'',body:''})
   }
 
   function setPostTitle(event:React.ChangeEvent<HTMLInputElement>) {
@@ -54,11 +52,16 @@ const NewPostPopup:React.FC<TNewPostPopup> = ({setNewPostPopup}) => {
     React.useEffect(() => {
         const successMessage = `${data?.title} post successfully created`
         useNotificationMessage({dispatch,error,isSuccess,successMessage})
+
+        if(isSuccess) {
+          setNewPost({title:'',body:''})
+          setNewPostPopup(false)
+        }
     },[isSuccess,error])
 
   return (
     <PopupWindow title='New post' setPopupActive={setNewPostPopup}>
-        {isLoading && <SpinnerLoader/>}
+        {isLoading && <SpinnerLoader positionType='absolute'/>}
         <div className='newPostInteractiveContainer'>
             <CustomInput value={newPost.title} type='text' placeholder='Title' onChange={setPostTitle}/>
             <div className="newPostButtonContainer">

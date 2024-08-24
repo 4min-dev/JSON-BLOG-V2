@@ -1,0 +1,7 @@
+.albumPhotosListContainer {
+    position: relative;
+    display: flex;
+    margin-top: 2vh;
+    flex-wrap: wrap;
+    justify-content: center;
+}

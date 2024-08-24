@@ -38,7 +38,7 @@ const SignUpPage: React.FC = () => {
 
   return (
     <div className='signUpPageContainer'>
-    {isLoading && <SpinnerLoader/>}
+    {isLoading && <SpinnerLoader positionType='fixed'/>}
       <Header />
       <AsidePan>
         <BackButton />

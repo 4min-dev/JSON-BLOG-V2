@@ -16,7 +16,7 @@ type TSignUpContentProps = {
 
 const SignUpPageContent:React.FC<TSignUpContentProps> = ({addNewUser}) => {
 
-  let [authUser,setAuthUser] = React.useState<IUser>({username:'',email:'',password:'',previewAvatar:'',serverAvatar:null})
+  let [authUser,setAuthUser] = React.useState<IUser>({username:'',email:'',password:'',serverAvatar:null})
 
   const dispatch = useDispatch()
 
@@ -32,18 +32,6 @@ const SignUpPageContent:React.FC<TSignUpContentProps> = ({addNewUser}) => {
     setAuthUser({...authUser,password:e.target.value})
   }
 
-  function setImage(imageUrl: string) {
-    setAuthUser(prevState => ({
-      ...prevState,
-      previewAvatar: imageUrl,
-    }))
-    dispatch(newNotification({
-      message: 'Avatar successfully loaded',
-      id: Date.now(),
-      type: 'successNotification'
-    }))
-  }
-  
   function setServerImage(imageFile: File) {
     setAuthUser(prevState => ({
       ...prevState,
@@ -59,7 +47,7 @@ const SignUpPageContent:React.FC<TSignUpContentProps> = ({addNewUser}) => {
     <div className='signUpPageContent'>
       <h1><p>Sign up</p></h1>
       <div className='signUpPageUIInteractive'>
-        <FileImageUploader title='Avatar' uploadFileType='image/png, image/jpeg, image/gif' setPreviewImage={setImage} setServerImage={setServerImage} previewImage={authUser.previewAvatar!} setUploaderError={setAvatarUploadingError}/>
+        <FileImageUploader title='Avatar' uploadFileType='image/png, image/jpeg, image/gif' setServerImage={setServerImage} setUploaderError={setAvatarUploadingError}/>
       <form>
         <CustomInput globalId='authorizationInputs' type='text' placeholder={'Login'} onChange={setAuthUserLogin}/>
         <CustomInput globalId='authorizationInputs' type='email' placeholder={'E-Mail'} onChange={setAuthUserEmail}/>

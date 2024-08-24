@@ -16,6 +16,7 @@ type TGetAlbumsResponse = {
 export const albumService = createApi({
     reducerPath:'albumService',
     baseQuery:fetchBaseQuery({baseUrl:'http://localhost:3000/albums/'}) as BaseQueryFn<any, unknown, IErrorServiceResponse>,
+    tagTypes:['Post'],
     endpoints:(builder) => ({
         getAlbums:builder.query<TGetAlbumsResponse, IFilterQuery>({
             query:(filter) => {
@@ -37,13 +38,30 @@ export const albumService = createApi({
                     method:'GET',
                     params:filterParams
                 })
-            }
+            },
+            providesTags:['Post']
         }),
         getAlbumPhotos:builder.query<IAlbumPhoto[],number>({
             query:(albumId) => ({
                 url:`getPhotos/${albumId}`,
                 method:'GET'
             })
+        }),
+        addNewAlbum:builder.mutation<IAlbum, IAlbum>({
+            query:(album) => {
+                const formData = new FormData()
+                formData.append('albumLogo',album.albumFileLogo!)
+                formData.append('title',album.title)
+                formData.append('albumId', String(album.albumId))
+                formData.append('userId', String(album.userId))
+
+                return ({
+                    url:'addNewAlbum',
+                    method:'POST',
+                    body:formData
+            })
+        },
+            invalidatesTags:['Post']
         })
     })
 })

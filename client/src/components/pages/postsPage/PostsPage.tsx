@@ -57,7 +57,7 @@ const PostsPage: React.FC = () => {
 
   return (
     <div className='postsPageContainer'>
-      {isLoading && <SpinnerLoader />}
+      {isLoading && <SpinnerLoader positionType='fixed'/>}
       {isNewPostPopup && <NewPostPopup setNewPostPopup={setNewPostPopup}/>}
       <Header />
       <AsidePan>

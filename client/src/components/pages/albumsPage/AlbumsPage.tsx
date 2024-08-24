@@ -11,6 +11,10 @@ import getTotalPages from '../../../utils/pagination/getTotalPages'
 import Footer from '../../UI/Footer'
 import { usePagination } from '../../../hooks/usePagination'
 import PaginationList from '../../UI/lists/PaginationList'
+import useDebounceSearch from '../../../hooks/useDebounceSearch'
+import NewAlbumPopup from './UI/NewAlbumPopup'
+import Notifications from '../../UI/popup/Notifications'
+import SpinnerLoader from '../../UI/loaders/SpinnerLoader'
 
 const AlbumsPage:React.FC = () => {
 
@@ -27,15 +31,24 @@ const AlbumsPage:React.FC = () => {
     totalContentCount:null,
   })
 
+  const setSearchQueryHandler = useDebounceSearch({setFilter})
+
   function paginationHandler(page:number) {
     setFilter((prev) => ({
       ...prev,
       currPage:page
     }))
   }
+  const paginationResult = usePagination({totalPages:filter.totalPages!,currPage:filter.currPage!})
 
   let [albums,setAlbums] = React.useState<IAlbum[]>([])
   const { data } = albumService.useGetAlbumsQuery(filter)
+
+  let [isNewAlbumPopup,setNewAlbumPopup] = React.useState(false)
+
+  function newAlbumPopupHandler() {
+    setNewAlbumPopup(!isNewAlbumPopup)
+  }
   
   React.useEffect(() => {
     if(data) {
@@ -55,17 +68,17 @@ const AlbumsPage:React.FC = () => {
     }
   },[data])
 
-  const paginationResult = usePagination({totalPages:filter.totalPages!,currPage:filter.currPage!})
-
   return (
     <div className='albumsPageContainer'>
+      {isNewAlbumPopup && <NewAlbumPopup setPopupActive={setNewAlbumPopup}/>}
       <Header/>
       <AsidePan>
-        <CustomButton buttonText='New album'/>
+        <CustomButton buttonText='New album' onClick={newAlbumPopupHandler}/>
       </AsidePan>
-      {albums && <AlbumsList albums={albums}/>}
+      {albums && <AlbumsList albums={albums} setSearchQuery={setSearchQueryHandler}/>}
       {paginationResult.length > 0 && <PaginationList paginationArray={paginationResult} currPage={filter.currPage!} paginationHandler={paginationHandler}/>}
       <Footer/>
+      <Notifications/>
     </div>
   )
 }

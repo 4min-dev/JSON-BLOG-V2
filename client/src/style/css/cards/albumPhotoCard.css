@@ -1,0 +1,14 @@
+.albumPhotoCard {
+    position: relative;
+    max-width: 150px;
+    word-wrap: break-word;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.albumPhotoCard img {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
