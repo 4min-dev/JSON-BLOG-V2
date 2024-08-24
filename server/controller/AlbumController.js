@@ -1,5 +1,8 @@
 const AlbumModel = require("../models/AlbumModel")
 const AlbumPhotosModel = require("../models/AlbumPhotosModel")
+const UserModel = require("../models/UserModel")
+const fetchImageToServer = require("../utils/fetchImageToServer")
+const formatterValidationExpressResult = require("./validation/formatterValidationExpressResult")
 
 class AlbumController {
     async getAlbums(req,res) {
@@ -37,6 +40,33 @@ class AlbumController {
             const photos = await AlbumPhotosModel.find({albumId:parseInt(albumId)})
 
             return res.status(200).json(photos)
+        } catch (error) {
+            return res.status(500).json({message:error})
+        }
+    }
+
+    async newAlbum(req,res) {
+        try {
+            const { title, albumId, userId } = req.body
+            const albumLogo = req.file
+
+            const validationResult = formatterValidationExpressResult(req,res)
+
+            if(!validationResult) {
+
+               const albumAuthor = await UserModel.findById(userId)
+               
+               const imageUrl = await fetchImageToServer({image:albumLogo})
+
+               const newAlbum = new AlbumModel({albumId, title, userId:albumAuthor._id})
+               const firstAlbumImage = new AlbumPhotosModel({albumId:newAlbum.albumId, imageUrl, title:`${title} album logo`})
+
+               await newAlbum.save()
+               await firstAlbumImage.save()
+
+                return res.status(200).json(newAlbum)
+            }
+
         } catch (error) {
             return res.status(500).json({message:error})
         }

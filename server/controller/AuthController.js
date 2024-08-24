@@ -4,8 +4,7 @@ const formatterValidationExpressResult = require("./validation/formatterValidati
 const AuthorizationServiceValidation = require("../services/AuthorizationServiceValidation")
 const AuthorizationService = require("../services/AuthorizationService")
 const UserModel = require('../models/UserModel')
-const FormData = require('form-data')
-const fetch = require('node-fetch')
+const fetchImageToServer = require('../utils/fetchImageToServer')
 
 class AuthController {
     async signUp(req,res) {
@@ -23,16 +22,9 @@ class AuthController {
                     const hashedPassword = bcrypt.hashSync(password,4)
 
                     if(avatar) {
-                        const formData = new FormData()
-                        formData.append('image', avatar.buffer, avatar.originalname)
+                        const urlAvatar = await fetchImageToServer({image:avatar})
     
-                        const uploadAvatar = await fetch('http://localhost:3000/image/upload', {
-                            method:'POST',
-                            body:formData,
-                            headers: formData.getHeaders()
-                        }).then(res => res.json())
-    
-                        await AuthorizationService.signUpService(res,{username,hashedPassword,email,avatar:uploadAvatar.image})
+                        await AuthorizationService.signUpService(res,{username,hashedPassword,email,avatar:urlAvatar})
                        } else {
                         await AuthorizationService.signUpService(res,{username,hashedPassword,email})
                     }
