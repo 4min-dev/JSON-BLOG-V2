@@ -16,7 +16,7 @@ const AlbumCard:React.FC<TAlbumCard> = ({album}) => {
 
   return (
     <>
-    {isAlbumOpened && <AlbumPhotosPopup albumTitle={album.title} setAlbumIsOpened={setIsAlbumOpened} photosData={albumPhotos!}/>}
+    {isAlbumOpened && <AlbumPhotosPopup album={album} setAlbumIsOpened={setIsAlbumOpened} photosData={albumPhotos!}/>}
     <div className='albumCard' onClick={() => setIsAlbumOpened(!isAlbumOpened)}>
       <button type='button'>
         <h1>{album.title}</h1>

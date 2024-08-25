@@ -15,8 +15,6 @@ export default function useNotificationMessage({dispatch, error, isSuccess, succ
     let notificationMessage: string | undefined
     let messageType:'errorNotification' | 'successNotification' | undefined
 
-  console.log(isSuccess)
-
     if(error && 'data' in error) { 
       messageType = 'errorNotification'
       if(typeof error.data === 'string') {

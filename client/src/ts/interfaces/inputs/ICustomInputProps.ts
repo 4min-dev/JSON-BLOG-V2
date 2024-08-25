@@ -3,6 +3,7 @@ import { ICustomComponentsIdentity } from "../ICustomComponentsIdentity"
 
 export interface ICustomInputProps extends ICustomComponentsIdentity {
     value?:string,
+    maxLength?:number,
     type?:string,
     placeholder:string,
     onChange:(e:React.ChangeEvent<HTMLInputElement>) => void

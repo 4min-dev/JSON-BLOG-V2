@@ -42,7 +42,7 @@ const AlbumsPage:React.FC = () => {
   const paginationResult = usePagination({totalPages:filter.totalPages!,currPage:filter.currPage!})
 
   let [albums,setAlbums] = React.useState<IAlbum[]>([])
-  const { data } = albumService.useGetAlbumsQuery(filter)
+  const { data, isLoading } = albumService.useGetAlbumsQuery(filter)
 
   let [isNewAlbumPopup,setNewAlbumPopup] = React.useState(false)
 
@@ -70,6 +70,7 @@ const AlbumsPage:React.FC = () => {
 
   return (
     <div className='albumsPageContainer'>
+      {isLoading && <SpinnerLoader positionType='fixed'/>}
       {isNewAlbumPopup && <NewAlbumPopup setPopupActive={setNewAlbumPopup}/>}
       <Header/>
       <AsidePan>

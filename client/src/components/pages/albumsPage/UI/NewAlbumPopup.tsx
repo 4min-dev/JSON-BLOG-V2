@@ -52,7 +52,7 @@ const NewAlbumPopup:React.FC<TNewAlbumPopup> = ({setPopupActive}) => {
     <PopupWindow title='New album' setPopupActive={setPopupActive}>
         {isLoading && <SpinnerLoader positionType='absolute'/>}
         <div className="newAlbumInteractiveContainer">
-            <CustomInput value={albumTitle} type='text' placeholder='Title' onChange={albumTitleHandler}/>
+            <CustomInput value={albumTitle} maxLength={40} type='text' placeholder='Title (max - 40)' onChange={albumTitleHandler}/>
             <FileImageUploader 
                 setServerImage={setServerAlbumLogo}
                 setUploaderError={setUploaderError}

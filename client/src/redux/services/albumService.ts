@@ -3,6 +3,7 @@ import { IErrorServiceResponse } from "../../ts/interfaces/errors/IErrorServiceR
 import { IAlbum } from "../../ts/interfaces/albums/IAlbum";
 import { IFilterQuery } from "../../ts/interfaces/filterContent/IFilterQuery";
 import { IAlbumPhoto } from "../../ts/interfaces/albums/IAlbumPhoto";
+import { IServerAlbumPhoto } from "../../ts/interfaces/albums/IServerAlbumPhoto";
 
 type THeaderResponse = {
     "x-total-count":string | number
@@ -45,7 +46,8 @@ export const albumService = createApi({
             query:(albumId) => ({
                 url:`getPhotos/${albumId}`,
                 method:'GET'
-            })
+            }),
+            providesTags:['Post']
         }),
         addNewAlbum:builder.mutation<IAlbum, IAlbum>({
             query:(album) => {
@@ -61,6 +63,22 @@ export const albumService = createApi({
                     body:formData
             })
         },
+            invalidatesTags:['Post']
+        }),
+        addNewPhoto:builder.mutation<IAlbumPhoto, IServerAlbumPhoto>({
+            query:(photo) => {
+                const formData = new FormData()
+
+                formData.append('albumId',String(photo.albumId))
+                formData.append('title',photo.title)
+                formData.append('newImage',photo.serverImage)
+
+                return ({
+                    url:'addNewPhoto',
+                    method:'POST',
+                    body:formData
+                })
+            },
             invalidatesTags:['Post']
         })
     })

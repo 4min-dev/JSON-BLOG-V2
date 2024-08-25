@@ -12,8 +12,8 @@ const AlbumPhotosList:React.FC<TAlbumPhotosList> = ({albumPhotos}) => {
   return (
    <>
    {albumPhotos.length > 0 
-    ?  <List containerClassname='albumPhotosListContainer' items={albumPhotos} renderItem={(albumPhoto) => 
-            <AlbumPhotoCard key={albumPhoto.imageUrl} albumPhoto={albumPhoto}/>}/>
+    ?  <List containerClassname='albumPhotosListContainer' items={albumPhotos} renderItem={(albumPhoto,index) => 
+            <AlbumPhotoCard key={index} albumPhoto={albumPhoto}/>}/>
     :  <h1>No photos found</h1>
     }
    </>
