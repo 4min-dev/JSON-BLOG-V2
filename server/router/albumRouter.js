@@ -9,5 +9,6 @@ const albumRouter = new Router()
 albumRouter.get('/getAlbums', AlbumController.getAlbums)
 albumRouter.get(`/getPhotos/:albumId`, AlbumController.getPhotos)
 albumRouter.post('/addNewAlbum', upload.single('albumLogo'),AlbumMiddleware.newAlbumMiddleware(), AlbumController.newAlbum)
+albumRouter.post('/addNewPhoto', upload.single('newImage'),AlbumMiddleware.newPhotoMiddleware(), AlbumController.newPhoto)
 
 module.exports = albumRouter

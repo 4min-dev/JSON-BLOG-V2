@@ -1,4 +1,4 @@
-const { check, checkExact } = require("express-validator");
+const { check } = require("express-validator");
 
 class AlbumMiddleware {
     newAlbumMiddleware() {
@@ -11,7 +11,20 @@ class AlbumMiddleware {
         
                 return true
             })
-        ];
+        ]
+    }
+
+    newPhotoMiddleware() {
+        return [
+            check('title','Title field required').notEmpty(),
+            check('newImage').custom((value, { req }) => {
+                if (!req.file) {
+                    throw new Error('Image required');
+                }
+        
+                return true
+            })
+        ]
     }
 }
 

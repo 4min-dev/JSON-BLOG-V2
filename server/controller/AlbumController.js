@@ -71,6 +71,25 @@ class AlbumController {
             return res.status(500).json({message:error})
         }
     }
+
+    async newPhoto(req,res) {
+        try {
+            const validationResult = formatterValidationExpressResult(req,res)
+
+            if(!validationResult) {
+                const { title, albumId } = req.body
+                const newImage = req.file
+
+                const imageUrl = await fetchImageToServer({image:newImage})
+                const newPhoto = new AlbumPhotosModel({albumId:parseInt(albumId),title:title,imageUrl:imageUrl})
+                await newPhoto.save()
+
+                return res.status(200).json(newPhoto)
+            }
+        } catch (error) {
+            return res.status(500).json({message:error})
+        }
+    }
 }
 
 module.exports = new AlbumController()
