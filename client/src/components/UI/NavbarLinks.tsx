@@ -11,7 +11,7 @@ const NavbarLinks:React.FC = () => {
         <a href='/albums'><h2>Albums</h2></a>
       </li>
       <li>
-        <a href='/todo'><h2>Todolist</h2></a>
+        <a href='/todos'><h2>Todolist</h2></a>
       </li>
     </ul>
   )

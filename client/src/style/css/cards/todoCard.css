@@ -1,0 +1,48 @@
+.todoCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding:10px 20px 10px 20px;
+    border-radius: 15px;
+    filter:drop-shadow(10px 10px 15px rgba(0, 0, 0, .6));
+}
+
+.todoCard > h1 {
+    font-weight: 500;
+}
+
+.todoCard > h1::first-letter {
+    text-transform: uppercase;
+}
+
+.noCompleted {
+    background:#FFE6B5;
+}
+
+.completed {
+    background:#B5FFD2;
+    opacity: 60%;
+}
+
+.todoCard > button {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    background:none;
+    border: none;
+    outline: none;
+}
+
+.todoCard > button:not(:disabled) {
+    cursor: pointer;
+}
+
+.todoCard > button > img {
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    width: 100%;
+    height: 100%;
+}

@@ -3,7 +3,6 @@ import { IPost } from "../../ts/interfaces/posts/IPost";
 import { IErrorServiceResponse } from "../../ts/interfaces/errors/IErrorServiceResponse";
 import { IFilterQuery } from "../../ts/interfaces/filterContent/IFilterQuery";
 import { INewPostContent } from "../../ts/interfaces/posts/INewPostContent";
-import { IComment } from "../../ts/interfaces/posts/IComment";
 
 type THeaderResponse = {
     "x-total-count":string | number

@@ -8,7 +8,8 @@ const cookieParser = require('cookie-parser');
 const imageRouter = require('./router/imageRouter');
 const postsRouter = require('./router/postsRouter');
 const commentsRouter = require('./router/commentsRouter');
-const albumRouter = require('./router/albumRouter')
+const albumRouter = require('./router/albumRouter');
+const todosRouter = require('./router/todosRouter');
 
 const HOSTNAME = process.env.HOSTNAME || 'localhost'
 const PORT = process.env.PORT || 5000
@@ -27,6 +28,7 @@ app.use('/auth', authRouter)
 app.use('/posts', postsRouter)
 app.use('/comments', commentsRouter)
 app.use('/albums', albumRouter)
+app.use('/todos', todosRouter)
 app.use('/image',imageRouter)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 

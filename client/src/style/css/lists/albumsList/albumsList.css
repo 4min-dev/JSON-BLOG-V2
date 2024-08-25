@@ -32,3 +32,7 @@
     border:3px solid #b6a27c;
     transition: borderRadius,.3s;
 }
+
+.albumsListFilterContainer .albumsSearchInput:focus {
+    border-radius: 15px;
+}

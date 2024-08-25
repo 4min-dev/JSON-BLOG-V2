@@ -2,6 +2,8 @@ const AlbumModel = require("../models/AlbumModel")
 const AlbumPhotosModel = require("../models/AlbumPhotosModel")
 const UserModel = require("../models/UserModel")
 const fetchImageToServer = require("../utils/fetchImageToServer")
+const getPagination = require("../utils/getPagination")
+const getSortQuery = require("../utils/getSortQuery")
 const formatterValidationExpressResult = require("./validation/formatterValidationExpressResult")
 
 class AlbumController {
@@ -12,11 +14,10 @@ class AlbumController {
             const searchQuery = req.query.query || ''
             const currPage = req.query.page || 1
 
-            const pagesToSkip = parseInt((currPage - 1) * limitQuery)
+            const pagesToSkip = await getPagination({currPage, limitQuery})
 
             const limit = parseInt(limitQuery)
-            const [sortKey,sortValue] = sortQuery.split(':')
-            const sort = typeof sortKey === 'string' && !isNaN(sortValue) ? { [sortKey]:parseInt(sortValue,2) } : { "albumId":1 }
+            const sort = await getSortQuery(sortQuery)
 
             const albums = await AlbumModel.aggregate([
                 {$match: {title:{$regex:searchQuery, $options: 'i'}}},

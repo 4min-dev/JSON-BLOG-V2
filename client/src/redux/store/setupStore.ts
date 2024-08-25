@@ -5,6 +5,7 @@ import sessionUserSlice from "../reducers/slices/sessionUserSlice";
 import { postsService } from "../services/postsService";
 import { commentsService } from "../services/commentsService";
 import { albumService } from "../services/albumService";
+import { todosService } from "../services/todosService";
 
 export default function setupStore() {
     return configureStore({
@@ -14,7 +15,8 @@ export default function setupStore() {
             [userAuthService.reducerPath]:userAuthService.reducer,
             [postsService.reducerPath]:postsService.reducer,
             [commentsService.reducerPath]:commentsService.reducer,
-            [albumService.reducerPath]:albumService.reducer
+            [albumService.reducerPath]:albumService.reducer,
+            [todosService.reducerPath]:todosService.reducer
         },
         middleware:(getDefaultMiddleware) => 
             getDefaultMiddleware()
@@ -22,6 +24,7 @@ export default function setupStore() {
                 userAuthService.middleware,
                 postsService.middleware,
                 commentsService.middleware,
-                albumService.middleware)
+                albumService.middleware,
+                todosService.middleware)
     })
 }
