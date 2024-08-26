@@ -2,6 +2,7 @@ const CommentModel = require("../models/CommentModel");
 const PostModel = require("../models/PostModel");
 const PostsModel = require("../models/PostModel");
 const UserModel = require("../models/UserModel");
+const getSortQuery = require("../utils/getSortQuery");
 const formatterValidationExpressResult = require("./validation/formatterValidationExpressResult");
 
 class PostsController {
@@ -12,8 +13,7 @@ class PostsController {
             const searchQuery = req.query.query || ''
 
             const limit = parseInt(limitQuery)
-            const [sortKey,sortValue] = sortQuery.split(':')
-            const sort = typeof sortKey === 'string' && !isNaN(sortValue) ? { [sortKey]:parseInt(sortValue,2) } : { "postId":1 }
+            const sort = getSortQuery({sortQuery})
 
             const posts = await PostsModel.aggregate([
                 {$match: {title:{$regex:searchQuery, $options: 'i'}}},

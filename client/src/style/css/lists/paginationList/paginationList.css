@@ -1,9 +1,9 @@
-.paginationList {
+.paginationListContainer {
     position: relative;
     display: flex;
     justify-content: center;
 }
 
-.paginationList > .paginationButton {
+.paginationListContainer > .paginationButton {
     margin-left: 20px;
 }

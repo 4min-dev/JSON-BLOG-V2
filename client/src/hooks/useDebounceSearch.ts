@@ -12,7 +12,8 @@ export default function useDebounceSearch({setFilter}:TUseDebounceSearch) {
   
         setFilter((prevOptions) => ({
           ...prevOptions,
-          searchQuery:query
+          searchQuery:query,
+          currPage:1
         }))
     },delay:300})
 }

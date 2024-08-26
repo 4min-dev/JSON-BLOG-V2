@@ -30,19 +30,19 @@ const PostsPage: React.FC = () => {
   })
 
   const [posts, setPosts] = React.useState<IPost[]>([])
-  const { data, isLoading } = postsService.useGetPostsQuery(filter, {refetchOnMountOrArgChange:true})
+  const { data, isLoading } = postsService.useGetPostsQuery(filter)
 
   let [isNewPostPopup,setNewPostPopup] = React.useState<boolean>(false)
 
   const setSearchQuery = useDebounceSearch({setFilter})
   const scrollLoadContent = useScrollContentLoad({filter,setFilter})
 
-  const setSortOption = useCallback((option:ISortOption) => {
+  const setSortOption = (option:ISortOption) => {
     setFilter((prevOptions) => ({
       ...prevOptions,
       sortQuery:option
     }))
-  },[filter.sortQuery])
+  }
 
   React.useEffect(() => {
 

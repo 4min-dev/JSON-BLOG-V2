@@ -77,7 +77,7 @@ const AlbumsPage:React.FC = () => {
         <CustomButton buttonText='New album' onClick={newAlbumPopupHandler}/>
       </AsidePan>
       {albums && <AlbumsList albums={albums} setSearchQuery={setSearchQueryHandler}/>}
-      {paginationResult.length > 0 && <PaginationList paginationArray={paginationResult} currPage={filter.currPage!} paginationHandler={paginationHandler}/>}
+      {(paginationResult.length > 0 && !filter.searchQuery) && <PaginationList paginationArray={paginationResult} currPage={filter.currPage!} paginationHandler={paginationHandler}/>}
       <Footer/>
       <Notifications/>
     </div>

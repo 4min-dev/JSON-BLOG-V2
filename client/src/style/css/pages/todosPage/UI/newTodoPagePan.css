@@ -1,0 +1,10 @@
+.newTodoPan {
+    margin-top: 100px;
+}
+
+.newTodoPan > .customTextarea, .newTodoPan > .customButton {
+    max-width: 50vw;
+    padding:10px 20px 10px 20px;
+    font-size: 30px;
+    margin-top: 20px;
+}

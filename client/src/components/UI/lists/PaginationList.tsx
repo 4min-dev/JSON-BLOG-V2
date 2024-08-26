@@ -11,7 +11,7 @@ type TPaginationList = {
 const PaginationList:React.FC<TPaginationList> = ({paginationArray,currPage,paginationHandler}) => {
 
   return (
-    <div className='paginationList'>
+    <div className='paginationListContainer'>
       {paginationArray.length > 0 
         && paginationArray.map(button => <PaginationButton disabled={button == currPage} button={button} paginationHandler={() => paginationHandler(button)} key={button}/>)}
     </div>
