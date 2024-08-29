@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import '../../../style/css/pages/postsPage/postsPage.css';
 import Header from '../../UI/Header';
 import AsidePan from '../../UI/AsidePan';
