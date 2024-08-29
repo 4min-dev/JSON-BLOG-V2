@@ -4,12 +4,14 @@ import { IPost } from '../../../../ts/interfaces/posts/IPost'
 
 const FullPostCard:React.FC<{post:IPost}> = ({post}) => {
 
+  console.log(post)
+
   return (
     <div className='postCard'>
       <h1>{post.title}</h1>
       <h2>{post.body}</h2>
       <div className='fullPostCardFooter'>
-        <h3><a href='#'>{post.author}</a></h3>
+        <h3><a href={`/profile/${post.author._id}`}>{post.author.username}</a></h3>
       </div>
     </div>
   )

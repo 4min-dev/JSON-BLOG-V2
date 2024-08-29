@@ -14,7 +14,7 @@ const ProfileLink:React.FC = () => {
 
   return (
     <div className='profileLink'>
-      {isSession ? <LoginedProfileLink username={user.username} avatar={userAvatar ? userAvatar : '/person.png'}/> : <UnloginedProfileLink/>}
+      {isSession ? <LoginedProfileLink username={user.username} avatar={userAvatar ? userAvatar : '/person.png'} userId={user.userId}/> : <UnloginedProfileLink/>}
     </div>
   )
 }

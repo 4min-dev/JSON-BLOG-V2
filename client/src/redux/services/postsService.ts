@@ -35,8 +35,9 @@ export const postsService = createApi({
                     url:'getPosts',
                     method:'GET',
                     headers: {
-                        'sort':filter.sortQuery,
-                        'limit':filter.limitQuery,
+                        'query':searchQuery,
+                        'sort':sortQuery,
+                        'limit':limitQuery,
                     },
                     params:params
                 })

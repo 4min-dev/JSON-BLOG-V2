@@ -35,7 +35,7 @@ const FileImageUploader: React.FC<IFileImageUploader> = ({ id, uploadFileType, t
             setPreviewImage(fileReader.result as string)
             setServerImage(file)
             dispatch(newNotification({
-              message: 'Avatar successfully loaded',
+              message: 'Image successfully uploaded',
               id: Date.now(),
               type: 'successNotification'
             }))

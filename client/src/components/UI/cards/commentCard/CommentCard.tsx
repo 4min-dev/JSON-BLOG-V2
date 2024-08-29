@@ -48,12 +48,12 @@ const CommentCard:React.FC<{comment:IComment}> = ({comment}) => {
 
   return (
     <>
-     {(isLoading || isPostDeletion) && <SpinnerLoader/>}
+     {(isLoading || isPostDeletion) && <SpinnerLoader positionType='fixed'/>}
      {commentAuthor && 
      <div className='commentCard'>
-      {isPostChanging && <SpinnerLoader/>}
+      {isPostChanging && <SpinnerLoader positionType='absolute'/>}
         <div className='commentCardHeading'>
-            <a href='#'>
+            <a href={`/profile/${commentAuthor.userId}`}>
               <img src={commentAuthor.avatar ? commentAuthor.avatar : '/person.png'} alt='commentAuthorAvatar'/>
             </a>
             <h1>{commentAuthor.username}</h1>

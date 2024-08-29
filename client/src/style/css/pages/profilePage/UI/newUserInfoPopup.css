@@ -1,0 +1,14 @@
+.verifyUserStageContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.verifyUserStageContainer .customInput, .verifyUserStageContainer .customButton {
+    padding:10px 20px 10px 20px;
+    font-size: 30px;
+    width: 30vw;
+    margin-bottom: 20px;
+}

@@ -3,3 +3,8 @@
     outline: none;
     background: #E7CD9C;
 }
+
+.customInput:disabled {
+    cursor: no-drop;
+    opacity: 60%;
+}

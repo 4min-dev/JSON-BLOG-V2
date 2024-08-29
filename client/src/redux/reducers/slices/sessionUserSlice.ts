@@ -14,6 +14,7 @@ const sessionUserSlice = createSlice({
     reducers: {
         newUserSession(state,action:PayloadAction<ITransferUserData>) {
             state.user = action.payload
+            console.log(state.user)
         }
     }
 

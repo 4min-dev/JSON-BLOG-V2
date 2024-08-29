@@ -55,20 +55,23 @@ const FullPostPage:React.FC = () => {
 
   return (
     <div className='fullPostPageContainer'>
-      {(isPostLoading || isCommentsLoading) && <SpinnerLoader/>}
       <Header/>
       <AsidePan>
         <BackButton/>
       </AsidePan>
-      <div className='fullPostPageCenterContainer'>
-        {post && <FullPostCard post={post}/>}
-        <div className="fullPostPageCommentsContainer">
-            <h1>{`Comments (${comments?.length})`}</h1>
-            {isNewCommentLoading && <SpinnerLoader/>}
-            {comments && <CommentsList comments={comments}/>}
-            <NewCommentPan commentData={newComment} setNewComment={setNewCommentHandler} sendNewCommentData={sendNewCommentHandler}/>
-        </div>
-      </div>
+      {(isPostLoading || isCommentsLoading) 
+      ? <SpinnerLoader positionType='fixed'/> 
+      : 
+        <div className='fullPostPageCenterContainer'>
+          {post && <FullPostCard post={post}/>}
+          <div className="fullPostPageCommentsContainer">
+              <h1>{`Comments (${comments?.length})`}</h1>
+              {isNewCommentLoading && <SpinnerLoader positionType='absolute'/>}
+              {comments && <CommentsList comments={comments}/>}
+              <NewCommentPan commentData={newComment} setNewComment={setNewCommentHandler} sendNewCommentData={sendNewCommentHandler}/>
+          </div>
+        </div>}
+      
       <Notifications/>
     </div>
   )

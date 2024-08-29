@@ -57,19 +57,20 @@ const PostsPage: React.FC = () => {
 
   return (
     <div className='postsPageContainer'>
-      {isLoading && <SpinnerLoader positionType='fixed'/>}
       {isNewPostPopup && <NewPostPopup setNewPostPopup={setNewPostPopup}/>}
       <Header />
       <AsidePan>
         <CustomButton buttonGlobalId='asidePanNewContentButton' buttonText='New post' onClick={() => setNewPostPopup(!isNewPostPopup)}/>
       </AsidePan>
-      <div className='postsPageContent'>
-        <div className="postsPageMainUIInteractive">
-        <CustomInput placeholder='Search..' onChange={setSearchQuery} globalId='postsSearchInput'/>
-        <CustomSortInput sortOptions={postSortData} sortOption={filter.sortQuery.name} setSortOption={setSortOption}/>
-        </div>
-        <PostList posts={posts}/>
-      </div>
+      {isLoading 
+        ? <SpinnerLoader positionType='fixed'/> 
+        : <div className='postsPageContent'>
+            <div className="postsPageMainUIInteractive">
+              <CustomInput placeholder='Search..' onChange={setSearchQuery} globalId='postsSearchInput'/>
+              <CustomSortInput sortOptions={postSortData} sortOption={filter.sortQuery.name} setSortOption={setSortOption}/>
+            </div>
+          <PostList posts={posts}/>
+          </div>}
       <Footer/>
     </div>
   );

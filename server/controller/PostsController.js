@@ -1,4 +1,3 @@
-const CommentModel = require("../models/CommentModel");
 const PostModel = require("../models/PostModel");
 const PostsModel = require("../models/PostModel");
 const UserModel = require("../models/UserModel");
@@ -6,32 +5,49 @@ const getSortQuery = require("../utils/getSortQuery");
 const formatterValidationExpressResult = require("./validation/formatterValidationExpressResult");
 
 class PostsController {
-    async getPosts(req,res) {
+    async getPosts(req, res) {
         try {
-            const limitQuery = req.query.limit || 20
-            const sortQuery = req.query.sort || "postId:1"
-            const searchQuery = req.query.query || ''
+            const limitQuery = req.query.limit || 20;
+            const sortQuery = req.query.sort || "postId:1";
+            const searchQuery = req.query.query || '';
 
-            const limit = parseInt(limitQuery)
-            const sort = getSortQuery({sortQuery})
+            const limit = parseInt(limitQuery);
+            const sort = await getSortQuery(sortQuery);
 
-            const posts = await PostsModel.aggregate([
-                {$match: {title:{$regex:searchQuery, $options: 'i'}}},
-                {$addFields:{
-                    commentsCount:{$size:"$comments"}
-                }},
-                {$sort:sort},
-                {$limit:limit}
-            ])
-            const xTotalCount = await PostsModel.countDocuments()
+            const posts = await PostModel.aggregate([
+                { $match: { title: { $regex: searchQuery, $options: 'i' } } },
+                {
+                    $lookup: {
+                        from: 'usermodels',
+                        localField: 'userId',
+                        foreignField: '_id',
+                        as: 'author'
+                    }
+                },
+                { $unwind: { path: '$author', preserveNullAndEmptyArrays: true } },
+                {
+                    $project: {
+                        postId: 1,
+                        title: 1,
+                        body: 1,
+                        comments: 1,
+                        commentsCount: { $size: '$comments' },
+                        author: { username:1, _id:1 }
+                    }
+                },
+                { $sort: sort },
+                { $limit: limit }
+            ]);
 
-            if(!posts) {
-                return res.status(400).json({message:'No posts found'})
+            const xTotalCount = await PostsModel.countDocuments();
+
+            if (!posts || posts.length === 0) {
+                return res.status(400).json({ message: 'No posts found' });
             }
 
-            return res.setHeader('x-total-count',xTotalCount).status(200).json({data:posts,headers:res.getHeaders()})
+            return res.setHeader('x-total-count', xTotalCount).status(200).json({ data: posts, headers: res.getHeaders() });
         } catch (error) {
-            return res.status(500).json({message:error})
+            return res.status(500).json({ message: error.message });
         }
     }
 
@@ -39,9 +55,15 @@ class PostsController {
         try {
             const { postId } = req.params
 
-            const post = await PostsModel.findOne({postId:parseInt(postId)})
+            const post = await PostModel.findOne({postId:postId}).populate('userId', 'username')
 
-            return res.status(200).json(post)
+            if(!post) {
+                return res.status(400).json({message:"No post found"})
+            }
+
+            const { userId, ...postWithoutUserId } = post.toObject()
+
+            return res.status(200).json({...postWithoutUserId, author: userId})
         } catch (error) {
             return res.status(500).json({message:error})
         }

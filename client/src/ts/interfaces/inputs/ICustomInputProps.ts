@@ -2,7 +2,9 @@ import React from "react"
 import { ICustomComponentsIdentity } from "../ICustomComponentsIdentity"
 
 export interface ICustomInputProps extends ICustomComponentsIdentity {
-    value?:string,
+    value?:string | number,
+    defaultValue?:string | number,
+    disabled?:boolean,
     maxLength?:number,
     type?:string,
     placeholder:string,

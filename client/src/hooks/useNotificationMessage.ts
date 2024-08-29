@@ -7,7 +7,7 @@ type TUseNotificationMessage = {
     dispatch:Dispatch,
     error?:IErrorServiceResponse | SerializedError,
     isSuccess:boolean,
-    successMessage:string
+    successMessage?:string
 }
 
 export default function useNotificationMessage({dispatch, error, isSuccess, successMessage}:TUseNotificationMessage) {

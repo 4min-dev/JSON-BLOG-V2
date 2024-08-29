@@ -5,10 +5,11 @@ import { userAuthService } from '../../../redux/services/userAuthService'
 
 type TLoginedProfileLink = {
   username:string,
-  avatar:string
+  avatar:string,
+  userId:string | number
 }
 
-const LoginedProfileLink:React.FC<TLoginedProfileLink> = ({username,avatar}) => {
+const LoginedProfileLink:React.FC<TLoginedProfileLink> = ({username,avatar,userId}) => {
 
   const [logout] = userAuthService.useLogoutUserMutation()
 
@@ -25,7 +26,7 @@ const LoginedProfileLink:React.FC<TLoginedProfileLink> = ({username,avatar}) => 
 
       <div className='loginedProfileLinkUserInteractive'>
         <img src={avatar} alt='profile'/>
-        <a href='/profile'>
+        <a href={`/profile/${userId}`}>
           <h4>Profile</h4>
         </a>
         <LogoutButton logoutHandler={logoutUser}/>

@@ -4,7 +4,7 @@ import CustomInput from './CustomInput'
 import { ICustomInputProps } from '../../../ts/interfaces/inputs/ICustomInputProps'
 import VisibilityButton from '../buttons/VisibilityButton'
 
-const CustomPasswordInput:React.FC<ICustomInputProps> = ({globalId,placeholder,onChange}) => {
+const CustomPasswordInput:React.FC<ICustomInputProps> = ({value, globalId,placeholder,onChange}) => {
 
   let [inputType,setInputType] = React.useState<'password' | 'text'>('password')
 
@@ -18,7 +18,7 @@ const CustomPasswordInput:React.FC<ICustomInputProps> = ({globalId,placeholder,o
   return (
     <div className='customPasswordInputContainer'>
       <VisibilityButton className={'visibilityInputButton'} setVisibility={setInputVisibility} isVisibility={isVisible}/>
-      <CustomInput globalId={globalId} type={inputType} placeholder={placeholder} onChange={onChange}/>
+      <CustomInput value={value} globalId={globalId} type={inputType} placeholder={placeholder} onChange={onChange}/>
     </div>
   )
 }

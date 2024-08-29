@@ -1,0 +1,15 @@
+.changeUserDataStageContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.changeUserDataStageContainer > .customInput, .changeUserDataStageContainer > .customButton {
+    padding:10px 20px 10px 20px;
+    font-size: 30px;
+}
+
+.changeUserDataStageContainer > .customInput, .changeUserDataStageContainer > .customButton, .changeUserDataStageContainer > .fileImageUploader {
+    margin-bottom: 20px;
+}

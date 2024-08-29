@@ -7,5 +7,6 @@ const todosRouter = new Router()
 todosRouter.get(`/getUserTodos/:userId`, TodosController.getUserTodos)
 todosRouter.post('/addNewTodo', TodosMiddleware.addNewTodoMiddleware(), TodosController.addNewTodo)
 todosRouter.put(`/completeTodo/:todoId`, TodosController.completeTodo)
+todosRouter.delete(`/deleteTodo/:todoId`, TodosController.deleteTodo)
 
 module.exports = todosRouter

@@ -8,8 +8,11 @@ const authRouter = new Router()
 
 authRouter.post('/signup',upload.single('image'),AuthorizationMiddleware.signUpMiddleware(), AuthController.signUp);
 authRouter.post('/signin',AuthorizationMiddleware.signInMiddleware(),AuthController.signIn)
+authRouter.post('/verifyUserByPassword', AuthorizationMiddleware.verifyUserByPasswordMiddleware(), AuthController.verifyUserByPassword)
+authRouter.put(`/changeUserData/:userId`, upload.single('image'), AuthorizationMiddleware.signUpMiddleware(), AuthController.changeUserData)
 authRouter.get('/signin/verify',AuthController.verifyToLogin)
 authRouter.put('/logout',AuthController.logout)
-authRouter.get('/getUser/:username',AuthController.getUserByUsername)
+authRouter.get('/getUserByUsername/:username',AuthController.getUserByUsername)
+authRouter.get('/getUserById/:userId', AuthController.getUserById)
 
 module.exports = authRouter

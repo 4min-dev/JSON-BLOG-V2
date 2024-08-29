@@ -26,20 +26,21 @@
     opacity: 60%;
 }
 
-.todoCard > button {
+.todoCardInteractiveContainer > button {
     position: relative;
-    width: 52px;
-    height: 52px;
+    width: 35px;
+    height: 35px;
     background:none;
     border: none;
     outline: none;
+    margin-right: 25px;
 }
 
-.todoCard > button:not(:disabled) {
+.todoCardInteractiveContainer > button:not(:disabled) {
     cursor: pointer;
 }
 
-.todoCard > button > img {
+.todoCardInteractiveContainer > button > img {
     position: absolute;
     left:0;
     right:0;
@@ -47,4 +48,10 @@
     bottom:0;
     width: 100%;
     height: 100%;
+}
+
+.todoCardInteractiveContainer {
+    position: relativee;
+    display: flex;
+    justify-content: end;
 }

@@ -6,6 +6,7 @@ import PostsPage from "../components/pages/postsPage/PostsPage";
 import FullPostPage from "../components/pages/fullPostPage/FullPostPage";
 import AlbumsPage from "../components/pages/albumsPage/AlbumsPage";
 import TodosPage from "../components/pages/todosPage/TodosPage";
+import ProfilePage from "../components/pages/profilePage/ProfilePage";
 
 export default class Router {
     publicRoutes() {
@@ -48,6 +49,10 @@ export default class Router {
             {
                 path:'/todos',
                 element:<TodosPage/>
+            },
+            {
+                path:`/profile/:userId`,
+                element:<ProfilePage/>
             }
         ])
     } 

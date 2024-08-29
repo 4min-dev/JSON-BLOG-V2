@@ -70,13 +70,12 @@ const AlbumsPage:React.FC = () => {
 
   return (
     <div className='albumsPageContainer'>
-      {isLoading && <SpinnerLoader positionType='fixed'/>}
       {isNewAlbumPopup && <NewAlbumPopup setPopupActive={setNewAlbumPopup}/>}
       <Header/>
       <AsidePan>
         <CustomButton buttonText='New album' onClick={newAlbumPopupHandler}/>
       </AsidePan>
-      {albums && <AlbumsList albums={albums} setSearchQuery={setSearchQueryHandler}/>}
+      {isLoading ? <SpinnerLoader positionType='fixed'/> : <AlbumsList albums={albums} setSearchQuery={setSearchQueryHandler}/>}
       {(paginationResult.length > 0 && !filter.searchQuery) && <PaginationList paginationArray={paginationResult} currPage={filter.currPage!} paginationHandler={paginationHandler}/>}
       <Footer/>
       <Notifications/>

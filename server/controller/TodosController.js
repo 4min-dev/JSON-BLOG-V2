@@ -68,6 +68,17 @@ class TodosController {
             return res.status(500).json({message:error})
         }
     }
+
+    async deleteTodo(req,res) {
+        try {
+            const { todoId } = req.params
+            const deletedTodo = await TodoModel.findOneAndDelete({id:parseInt(todoId)})
+
+            return res.status(200).json(deletedTodo)
+        } catch (error) {
+            return res.status(500).json({message:error})
+        }
+    }
 }
 
 module.exports = new TodosController()

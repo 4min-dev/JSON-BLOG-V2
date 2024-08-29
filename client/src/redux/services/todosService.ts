@@ -48,6 +48,13 @@ export const todosService = createApi({
                 method:'PUT'
             }),
             invalidatesTags:['Post']
+        }),
+        deleteTodo:builder.mutation<ITodo, number>({
+            query:(todoId) => ({
+                url:`deleteTodo/${todoId}`,
+                method:'DELETE'
+            }),
+            invalidatesTags:['Post']
         })
     })
 })

@@ -41,7 +41,7 @@ const PostList:React.FC<TPostList> = ({posts}) => {
 
   return (
     <div className='postListContainer'>
-      {(isDeletion || isPostChanging) && <SpinnerLoader/>}
+      {(isDeletion || isPostChanging) && <SpinnerLoader positionType='absolute'/>}
       {posts.length > 0 
         ? <List items={posts} renderItem={(post) => <PostCard post={post} key={post.postId} deletePost={deletePostHandler} changePost={changePostHandler}/>}/> 
         : <h1>No posts found</h1>}

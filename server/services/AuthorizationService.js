@@ -14,13 +14,9 @@ class AuthorizationService {
             ? { username, password, email, avatar } 
             : { username, password, email }
 
-        const userTransferData = newUserData.avatar
-            ? { username, email, avatar }
-            : { username, email }
-
         const user = new UserModel({...userData, id:Date.now()})
 
-        const personalUserToken = await TokenService.generateToken({...userTransferData,userId:user._id})
+        const personalUserToken = await TokenService.generateToken({userId:user._id})
         const accessToken = new TokenModel({userId:user._id,accessToken:personalUserToken})
 
         await user.save()

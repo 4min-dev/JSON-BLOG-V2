@@ -15,6 +15,13 @@ class AuthorizationMiddleware {
             check('password','Password field required').notEmpty()
         ]
     }
+
+    verifyUserByPasswordMiddleware() {
+        return [
+            check('password', 'First field cannot be empty').notEmpty(),
+            check('verifyPassword', 'Two field cannot be empty').notEmpty()
+        ]
+    }
 }
 
 module.exports = new AuthorizationMiddleware()

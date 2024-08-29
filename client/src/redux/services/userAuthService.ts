@@ -22,8 +22,10 @@ export const userAuthService = createApi({
                     body:formData
                 })
             },
+
             invalidatesTags:['Post'],
         }),
+
         login:builder.mutation<IUser,IUser>({
             query:(user) => ({
                 url:'signin',
@@ -31,8 +33,10 @@ export const userAuthService = createApi({
                 body:user,
                 credentials:'include'
             }),
+
             invalidatesTags:['Post']
         }),
+
         verifyUserToLogin:builder.query<ITransferUserData,void>({
             query:() => ({
                 url:'signin/verify',
@@ -40,6 +44,17 @@ export const userAuthService = createApi({
                 credentials:'include'
             })
         }),
+
+        verifyUserByPassword:builder.mutation<{isUserVerifyed:boolean, verifyedUser:IUser},{userId:string | number, password:string, verifyPassword:string}>({
+            query:(verifyedUser) => ({
+                url:`verifyUserByPassword`,
+                method:'POST',
+                body:verifyedUser
+            }),
+
+            invalidatesTags:['Post']
+        }),
+
         logoutUser:builder.mutation<void,void>({
             query:() => ({
                 url:'logout',
@@ -47,11 +62,38 @@ export const userAuthService = createApi({
                 credentials:'include'
             })
         }),
+
         findUserByUsername:builder.query<ITransferUserData,string>({
             query:(username) => ({
-                url:`getUser/${username}`,
+                url:`getUserByUsername/${username}`,
                 method:'GET'
             })
+        }),
+
+        findUserById:builder.query<ITransferUserData,string>({
+            query:(userId) => ({
+                url:`getUserById/${userId}`,
+                method:'GET'
+            })
+        }),
+
+        changeUserData:builder.mutation<IUser, IUser>({
+            query:(newUserData) => {
+
+                const formData = new FormData()
+
+                formData.append('image',newUserData.serverAvatar!)
+                formData.append('username',newUserData.username)
+                formData.append('email',newUserData.email!)
+                formData.append('password',newUserData.password)
+
+                return ({
+                    url:`changeUserData/${newUserData.userId}`,
+                    method:'PUT',
+                    body:formData
+            })},
+
+            invalidatesTags:['Post']
         })
     })
 })

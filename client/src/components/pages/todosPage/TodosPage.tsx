@@ -97,12 +97,14 @@ const TodosPage:React.FC = () => {
 
   return (
     <div className='todosPageContainer'>
-      {(isLoading || isNewTodoLoading) && <SpinnerLoader positionType='fixed'/>}
+      {isNewTodoLoading && <SpinnerLoader positionType='fixed'/>}
       <Header/>
       <AsidePan>
         <CustomSortInput setSortOption={setSortOptionHandler} sortOption={filter.sortQuery.name} sortOptions={todosSortData}/>
       </AsidePan>
-      {data && <TodosList todos={data.data} filter={filter} paginationHandler={paginationHandler} todosSearchInputHandler={searchQueryHandler}/>}
+      {isLoading
+        ? <SpinnerLoader positionType='fixed'/> 
+        : data && <TodosList todos={data.data} filter={filter} setFilter={setFilter} paginationHandler={paginationHandler} todosSearchInputHandler={searchQueryHandler}/>}
       <NewTodoPan newTodoTitle={newTodoTitle} newTodoTitleHandler={newTodoTitleHandler} sendNewTodoHandler={sendNewTodoHandler}/>
       <Footer/>
       <Notifications/>

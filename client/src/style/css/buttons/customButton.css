@@ -1,4 +1,5 @@
 .customButton {
+    position: relative;
     background: #E7CD9C;
     border:none;
     outline: none;
@@ -6,4 +7,9 @@
 
 .customButton:not(:disabled) {
     cursor: pointer;
+}
+
+.customButton > img {
+    width: 100%;
+    height: 100%;
 }
