@@ -149,6 +149,8 @@ class AuthController {
             const isDataBusy = await AuthorizationServiceValidation.changeUserDataValidation(res,{username, email}, user)
            
             if(!isDataBusy) {
+
+                const isOldPassword = bcrypt.compareSync(password,user.password)
                 const hashedPassword = bcrypt.hashSync(password,4)
 
                 let changedUser
@@ -164,9 +166,17 @@ class AuthController {
                         }
 
                         const urlAvatar = await fetchImageToServer({image:avatar})
-                        changedUser = await UserModel.findByIdAndUpdate(userId, {$set: {username, password:hashedPassword, email, avatar:urlAvatar}}, {new:true})
+                        if(!isOldPassword) {
+                            changedUser = await UserModel.findByIdAndUpdate(userId, {$set: {username, password:hashedPassword, email, avatar:urlAvatar}}, {new:true})
+                        } else {
+                            changedUser = await UserModel.findByIdAndUpdate(userId, {$set: {username, email, avatar:urlAvatar}}, {new:true})
+                        }
                     } else {
-                        changedUser = await UserModel.findByIdAndUpdate(userId, {$set: {username, password:hashedPassword, email}}, {new:true})
+                        if(!isOldPassword) {
+                            changedUser = await UserModel.findByIdAndUpdate(userId, {$set: {username, password:hashedPassword, email}}, {new:true})
+                        } else {
+                            changedUser = await UserModel.findByIdAndUpdate(userId, {$set: {username, email}}, {new:true})
+                        }
                     }
 
                     return res.status(200).json({

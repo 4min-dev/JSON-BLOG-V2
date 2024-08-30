@@ -31,7 +31,10 @@ class AuthorizationServiceValidation {
 
     async changeUserDataValidation(res, userDataValidation, user) {
             if(userDataValidation.username != user.username) {
-                const isUsernameBusy = await UserModel.findOne({ username: new RegExp(userDataValidation.username, 'i')})
+                const isUsernameBusy = await UserModel.findOne({ username: { 
+                    $regex: `^${userDataValidation.username}$`, 
+                    $options: 'i' 
+                }})
 
                 if(isUsernameBusy) {
                     return res.status(400).json({message:'Busy username'})
@@ -39,7 +42,10 @@ class AuthorizationServiceValidation {
             }
 
             if(userDataValidation.email != user.email) {
-                const isEmailBusy = await UserModel.findOne({email: new RegExp(userDataValidation.email, 'i')})
+                const isEmailBusy = await UserModel.findOne({email: { 
+                    $regex: `^${userDataValidation.email}$`, 
+                    $options: 'i' 
+                }})
 
                 if(isEmailBusy) {
                     return res.status(400).json({message:'Busy email'})

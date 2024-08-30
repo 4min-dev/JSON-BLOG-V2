@@ -16,13 +16,17 @@ const ProfilePage:React.FC = () => {
     const params = useParams()
     const selector = useTypedSelector(state => state.sessionUserSlice)
 
-    const { data:user, isLoading } = userAuthService.useFindUserByIdQuery(params.userId!)
+    const { data:user, isLoading, refetch } = userAuthService.useFindUserByIdQuery(params.userId!)
 
     let [isChangeUserDataPopup, setChangeUserDataPopup] = React.useState<boolean>(false)
 
     function setChangeUserDataPopupHandler() {
         setChangeUserDataPopup(!isChangeUserDataPopup)
     }
+
+    React.useEffect(() => {
+      refetch()
+    },[selector.user])
 
   return (
     <div className='profilePageContainer'>
