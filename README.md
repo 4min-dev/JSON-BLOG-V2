@@ -37,6 +37,9 @@ Video Review - [link](https://youtu.be/IribWafhZos)
 - Multer;
 - Cookie-parser.
 
+      npm run dev - запустить локальный хост вебсайта в папке client
+      npm rum start - запустить сервер в папке server
+
   <hr/>
 
   <h2 align="center">EN | Updated version JSON-BLOG.</h2>
@@ -69,3 +72,6 @@ Video Review - [link](https://youtu.be/IribWafhZos)
 - Mongoose;
 - Multer;
 - Cookie-parser.
+
+      npm run dev - launch a local host in the folder called client
+      npm rum start - launch a server in the folder called server
