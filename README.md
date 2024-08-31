@@ -40,6 +40,8 @@ Video Review - [link](https://youtu.be/IribWafhZos)
       npm run dev - запустить локальный хост вебсайта в папке client
       npm rum start - запустить сервер в папке server
 
+      Пароль для всех пользователей - H15zom
+
   <hr/>
 
   <h2 align="center">EN | Updated version JSON-BLOG.</h2>
@@ -75,3 +77,5 @@ Video Review - [link](https://youtu.be/IribWafhZos)
 
       npm run dev - launch a local host in the folder called client
       npm rum start - launch a server in the folder called server
+
+      Password for all users - H15zom
