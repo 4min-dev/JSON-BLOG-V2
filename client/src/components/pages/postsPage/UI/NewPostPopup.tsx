@@ -26,7 +26,10 @@ const NewPostPopup:React.FC<TNewPostPopup> = ({setNewPostPopup}) => {
     async function handleNewPost() {
 
     const post:IPost = {
-      author:userSessionSelector.user.username,
+      author:{
+        _id:userSessionSelector.user.userId,
+        username:userSessionSelector.user.username
+      },
       title:newPost.title,
       body:newPost.body,
       postId:Date.now()

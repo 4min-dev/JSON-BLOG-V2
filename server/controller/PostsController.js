@@ -41,10 +41,6 @@ class PostsController {
 
             const xTotalCount = await PostsModel.countDocuments();
 
-            if (!posts || posts.length === 0) {
-                return res.status(400).json({ message: 'No posts found' });
-            }
-
             return res.setHeader('x-total-count', xTotalCount).status(200).json({ data: posts, headers: res.getHeaders() });
         } catch (error) {
             return res.status(500).json({ message: error.message });
@@ -76,9 +72,9 @@ class PostsController {
             if(!validationResult) {
                 const { author, title, body, postId } = req.body
 
-                const newPost = new PostModel({postId,title,body,author})
+                const newPost = new PostModel({postId,title,body,userId:author._id})
 
-                await UserModel.findOneAndUpdate({username:author},{$push:{posts:newPost._id}})
+                await UserModel.findOneAndUpdate({username:author.username},{$push:{posts:newPost._id}})
                 await newPost.save()
 
                 return res.status(200).json(newPost)
