@@ -4,7 +4,7 @@
 Video Review - [link](https://youtu.be/IribWafhZos)
 
 [V2](https://github.com/4min-dev/JSON-BLOG-V2)
-Video Review - [link](https://youtu.be/IribWafhZos)
+Video Review - [link](https://youtu.be/OgwTnhlGWoc)
 
 <h2 align="center">RU | Обновлённая версия проекта JSON-BLOG.</h2>
 
