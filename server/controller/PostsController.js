@@ -8,7 +8,7 @@ class PostsController {
     async getPosts(req, res) {
         try {
             const limitQuery = req.query.limit || 20;
-            const sortQuery = req.query.sort || "postId:1";
+            const sortQuery = req.query.sort || "_id:1";
             const searchQuery = req.query.query || '';
 
             const limit = parseInt(limitQuery);
